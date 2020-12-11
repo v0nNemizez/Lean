@@ -40,12 +40,12 @@ namespace QuantConnect.Lean.Engine.DataFeeds
         private BaseData _factory;
         private bool _shouldCacheDataPoints;
         private static readonly MemoryCache BaseDataSourceCache = new MemoryCache("BaseDataSourceCache",
-            // Cache can use up to 70% of the installed physical memory
-            new NameValueCollection { { "physicalMemoryLimitPercentage", "70" } });
+            // Cache can use up to 30% of the installed physical memory
+            new NameValueCollection { { "physicalMemoryLimitPercentage", "30" } });
         private static readonly CacheItemPolicy CachePolicy = new CacheItemPolicy
         {
             // Cache entry should be evicted if it has not been accessed in given span of time:
-            SlidingExpiration = TimeSpan.FromMinutes(5)
+            SlidingExpiration = TimeSpan.FromMinutes(1)
         };
 
         /// <summary>
